@@ -1,0 +1,35 @@
+{
+  "name": "@tomisakae/test-mcp",
+  "version": "1.0.2",
+  "description": "test-mcp",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "test-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": [
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NguyenHuynhPhuVinh/test-mcp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NguyenHuynhPhuVinh/test-mcp/issues"
+  },
+  "homepage": "https://github.com/NguyenHuynhPhuVinh/test-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.25.23"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
+  }
+}
