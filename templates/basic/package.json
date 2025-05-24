@@ -1,0 +1,40 @@
+{
+  "name": "{{projectName}}",
+  "version": "1.0.0",
+  "description": "{{description}}",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "{{serverName}}": "./build/index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "npx @modelcontextprotocol/inspector node ./build/index.js",
+    "build": "tsc"
+  },
+  "files": [
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/{{author}}/{{projectName}}.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol"
+  ],
+  "author": "{{author}}",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/{{author}}/{{projectName}}/issues"
+  },
+  "homepage": "https://github.com/{{author}}/{{projectName}}#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.25.23"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3"
+  }
+}

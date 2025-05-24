@@ -1,34 +1,51 @@
 {
-  "name": "@tomisakae/test-mcp",
-  "version": "1.0.2",
-  "description": "test-mcp",
-  "main": "index.js",
+  "name": "@tomisakae/setup-mcp",
+  "version": "1.0.0",
+  "description": "Công cụ thiết lập nhanh chóng dự án MCP (Model Context Protocol)",
+  "main": "build/index.js",
   "type": "module",
   "bin": {
-    "test-mcp": "./build/index.js"
+    "setup-mcp": "./build/index.js"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsc -w"
   },
   "files": [
-    "build"
+    "build",
+    "templates"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NguyenHuynhPhuVinh/test-mcp.git"
+    "url": "git+https://github.com/NguyenHuynhPhuVinh/setup-mcp.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "claude",
+    "cursor",
+    "windsurf"
+  ],
+  "author": "TomiSakae",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NguyenHuynhPhuVinh/test-mcp/issues"
+    "url": "https://github.com/NguyenHuynhPhuVinh/setup-mcp/issues"
   },
-  "homepage": "https://github.com/NguyenHuynhPhuVinh/test-mcp#readme",
+  "homepage": "https://github.com/NguyenHuynhPhuVinh/setup-mcp#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
+    "chalk": "^5.4.1",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.3.0",
+    "inquirer": "^9.3.7",
+    "ora": "^8.2.0",
     "zod": "^3.25.23"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/inquirer": "^9.0.8",
     "@types/node": "^22.15.21",
     "typescript": "^5.8.3"
   }
