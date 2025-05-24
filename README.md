@@ -17,14 +17,11 @@ npx @tomisakae/setup-mcp
 ## Sử dụng
 
 ```bash
-# Tạo dự án MCP mới trong thư mục hiện tại
+# Tạo dự án MCP mới
 setup-mcp
 
 # Tạo dự án MCP mới với template cụ thể
 setup-mcp --template basic
-
-# Tạo dự án MCP mới trong thư mục cụ thể
-setup-mcp --directory ./my-mcp-project
 
 # Xem trợ giúp
 setup-mcp --help
@@ -33,7 +30,6 @@ setup-mcp --help
 ## Tùy chọn
 
 - `-t, --template <template>`: Loại template (mặc định: basic)
-- `-d, --directory <directory>`: Thư mục đích (mặc định: ./)
 - `-h, --help`: Hiển thị trợ giúp
 - `-V, --version`: Hiển thị phiên bản
 
@@ -59,12 +55,11 @@ Template cơ bản cho MCP server với:
 
 ## Sau khi tạo dự án
 
-Sau khi tạo dự án MCP mới, bạn cần:
+Công cụ sẽ tạo một thư mục mới với tên dự án bạn đã nhập, sau đó tự động cài đặt các dependencies cần thiết. Sau khi hoàn tất, bạn chỉ cần:
 
 1. Di chuyển vào thư mục dự án: `cd <tên-dự-án>`
-2. Cài đặt dependencies: `npm install`
-3. Build dự án: `npm run build`
-4. Khởi động server: `npm start`
+2. Build dự án: `npm run build`
+3. Khởi động server: `npm start`
 
 ## Cấu hình với các ứng dụng AI
 
