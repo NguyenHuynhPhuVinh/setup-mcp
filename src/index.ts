@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Phiên bản từ package.json
-const version = "1.0.0";
+const version = "1.0.2";
 
 // Khởi tạo chương trình
 const program = new Command();
@@ -104,7 +104,15 @@ program
 
     try {
       // Sao chép các file từ template
-      await fs.copy(templateDir, targetDir, { overwrite: true });
+      await fs.copy(templateDir, targetDir, { 
+        overwrite: true,
+        // Đảm bảo các file ẩn như .gitignore cũng được sao chép
+        filter: (src) => {
+          const filename = path.basename(src);
+          // Trả về true cho tất cả các file, bao gồm cả các file bắt đầu bằng dấu chấm
+          return true;
+        }
+      });
 
       // Đọc và cập nhật các file
       const files = ["package.json", "README.md", "src/index.ts"];
