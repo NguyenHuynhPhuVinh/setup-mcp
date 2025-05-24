@@ -1,6 +1,6 @@
 {
   "name": "@tomisakae/setup-mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Công cụ thiết lập nhanh chóng dự án MCP (Model Context Protocol)",
   "main": "build/index.js",
   "type": "module",

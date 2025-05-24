@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Phiên bản từ package.json
-const version = "1.0.2";
+const version = "1.0.3";
 
 // Khởi tạo chương trình
 const program = new Command();
@@ -104,14 +104,14 @@ program
 
     try {
       // Sao chép các file từ template
-      await fs.copy(templateDir, targetDir, { 
+      await fs.copy(templateDir, targetDir, {
         overwrite: true,
         // Đảm bảo các file ẩn như .gitignore cũng được sao chép
         filter: (src) => {
           const filename = path.basename(src);
           // Trả về true cho tất cả các file, bao gồm cả các file bắt đầu bằng dấu chấm
           return true;
-        }
+        },
       });
 
       // Đọc và cập nhật các file
@@ -142,6 +142,54 @@ program
       }
 
       spinner.succeed("Dự án đã được thiết lập thành công!");
+
+      // Tạo file .gitignore
+      const gitignoreContent = `# Các thư mục build
+/build
+/dist
+
+# Các thư mục và file của Node.js
+/node_modules
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Các file môi trường và cấu hình cá nhân
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Các file hệ thống
+.DS_Store
+Thumbs.db
+
+# Các file IDE và editor
+/.idea
+/.vscode
+*.swp
+*.swo
+
+# Các file log
+*.log
+
+# Các file tạm thời
+*.tmp
+*.temp
+
+# Các file cache
+.npm
+.eslintcache
+.stylelintcache`;
+
+      await fs.writeFile(
+        path.join(targetDir, ".gitignore"),
+        gitignoreContent,
+        "utf8"
+      );
+      console.log(chalk.green("✅ Đã tạo file .gitignore"));
 
       // Cài đặt dependencies
       console.log(chalk.blue("\n💾 Đang cài đặt dependencies..."));
