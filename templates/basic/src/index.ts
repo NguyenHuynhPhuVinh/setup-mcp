@@ -2,58 +2,32 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { z } from "zod";
+import { APP_CONFIG } from "./config/config.js";
+
+// Import các module đăng ký công cụ
+import { registerBasicTools } from "./mcp/basic.js";
+import { registerExampleTools } from "./mcp/example.js";
 
 // Tạo server instance
+// Create server instance
 const server = new McpServer({
-  name: "{{serverName}}",
-  version: "1.0.0",
+  name: APP_CONFIG.NAME,
+  version: APP_CONFIG.VERSION,
   capabilities: {
     resources: {},
     tools: {},
   },
 });
-
-// Đăng ký tool đơn giản
-server.tool(
-  "hello",
-  "Trả về lời chào đơn giản",
-  {},
-  async () => {
-    return {
-      content: [
-        {
-          type: "text",
-          text: "Xin chào từ {{serverName}}!",
-        },
-      ],
-    };
-  }
-);
-
-// Đăng ký tool có tham số
-server.tool(
-  "greet",
-  "Chào một người cụ thể",
-  {
-    name: z.string().describe("Tên người muốn chào"),
-  },
-  async ({ name }) => {
-    return {
-      content: [
-        {
-          type: "text",
-          text: `Xin chào ${name}!`,
-        },
-      ],
-    };
-  }
-);
+// Đăng ký các công cụ
+registerBasicTools(server);
+registerExampleTools(server);
 
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("{{serverName}} MCP Server đang chạy trên stdio");
+  console.error(
+    `${APP_CONFIG.NAME} v${APP_CONFIG.VERSION} đang chạy trên stdio`
+  );
 }
 
 main().catch((error) => {
